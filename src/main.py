@@ -17,16 +17,19 @@ characters_folder = service_config.get("characters", "./characters")
 model_folder = service_config.get("models","./models")
 model_name = service_config.get("model", "Qwen3-TTS-12Hz-1.7B-Base")
 
-model_path = f"./{model_folder}/{model_name}"
+model_path = f"{model_folder}/{model_name}"
 
 if not Path(model_path).exists():
+    print(f"未找到模型 {model_path}, 尝试自动下载 Qwen/{model_name}")
     if os.system(f"hf download Qwen/{model_name} --local-dir {model_path}") != 0:
         print(f"未找到模型 {model_name} 在 {model_path}, 且自动下载 Qwen/{model_name} 失败")
         exit(1)
 
+print(f"加载模型: {model_path}")
 model = FasterQwen3TTS.from_pretrained(
     model_path,
 )
+print(f"模型加载完成")
 
 app = FastAPI(title="Streaming TTS Service (Voice Clone)")
 

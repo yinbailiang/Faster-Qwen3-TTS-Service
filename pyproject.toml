@@ -11,4 +11,5 @@ dependencies = [
     "torchaudio",
     "torchvision",
     "faster_qwen3_tts",
+    "huggingface",
 ]
