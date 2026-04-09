@@ -1,0 +1,11 @@
+{
+    "name":"faster_qwen3_tts_service",
+    "env":{
+        "type": "conda",
+        "name": "Faster-Qwen3-TTS-Service",
+        "python": "3.12",
+        "config": "pyproject.toml"
+    },
+    "boot":"./src/main.py",
+    "status_endpoint":"http://127.0.0.1:8001/status"
+}

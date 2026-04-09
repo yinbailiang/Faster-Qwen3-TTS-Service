@@ -1,0 +1,14 @@
+[project]
+name = "faster_qwen3_tts_service"
+version = "0.1.0"
+description = "A TTS system based on Qwen3 and FastAPI"
+
+dependencies = [
+    "fastapi",
+    "uvicorn",
+    "soundfile",
+    "torch",
+    "torchaudio",
+    "torchvision",
+    "faster_qwen3_tts",
+]
