@@ -2,6 +2,7 @@ import io
 import json
 import os
 import numpy as np
+from pathlib import Path
 from fastapi import FastAPI, HTTPException, Response
 from fastapi.responses import StreamingResponse
 from pydantic import BaseModel, Field
@@ -11,12 +12,20 @@ from faster_qwen3_tts import FasterQwen3TTS
 
 service_config_path = "./service_config.json"
 service_config = json.load(open(service_config_path, "r"))
+
 characters_folder = service_config.get("characters", "./characters")
 model_folder = service_config.get("models","./models")
 model_name = service_config.get("model", "Qwen3-TTS-12Hz-1.7B-Base")
 
+model_path = f"./{model_folder}/{model_name}"
+
+if not Path(model_path).exists():
+    if os.system(f"hf download Qwen/{model_name} --local-dir {model_path}") != 0:
+        print(f"未找到模型 {model_name} 在 {model_path}, 且自动下载 Qwen/{model_name} 失败")
+        exit(1)
+
 model = FasterQwen3TTS.from_pretrained(
-    f"./{model_folder}/{model_name}",
+    model_path,
 )
 
 app = FastAPI(title="Streaming TTS Service (Voice Clone)")

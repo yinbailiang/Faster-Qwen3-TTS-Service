@@ -6,6 +6,7 @@
         "python": "3.12",
         "config": "pyproject.toml"
     },
+    "pytorch":"cuda",
     "boot":"./src/main.py",
     "status_endpoint":"http://127.0.0.1:8001/status"
 }
