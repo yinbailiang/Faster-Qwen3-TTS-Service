@@ -1,6 +1,7 @@
 [project]
 name = "faster_qwen3_tts_service"
 version = "0.1.0"
+requires-python = ">=3.12"
 description = "A TTS system based on Qwen3 and FastAPI"
 
 dependencies = [
