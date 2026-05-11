@@ -1,6 +1,5 @@
 {
     "name":"faster_qwen3_tts_service",
-    "pytorch":"cuda",
     "boot":"./src/main.py",
     "git": "https://github.com/yinbailiang/Faster-Qwen3-TTS-Service.git",
     
