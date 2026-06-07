@@ -1,6 +1,7 @@
 [project]
 name = "faster_qwen3_tts_service"
 version = "0.1.0"
+requires-python = ">=3.12"
 description = "A TTS system based on Qwen3 and FastAPI"
 
 dependencies = [
@@ -13,3 +14,16 @@ dependencies = [
     "faster_qwen3_tts",
     "huggingface",
 ]
+
+[tool.uv.sources]
+torch = [
+    { index = "pytorch-cu128" },
+]
+torchvision = [
+    { index = "pytorch-cu128" },
+]
+
+[[tool.uv.index]]
+name = "pytorch-cu128"
+url = "https://download.pytorch.org/whl/cu128"
+explicit = true

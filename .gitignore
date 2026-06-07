@@ -1,5 +1,7 @@
 .vscode/
+.venv/
 
 models/
 
 *.egg-info
+*.log
